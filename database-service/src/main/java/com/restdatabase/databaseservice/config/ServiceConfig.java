@@ -1,8 +1,5 @@
 package com.restdatabase.databaseservice.config;
 
-import com.fasterxml.jackson.databind.Module;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.restdatabase.databaseservice.deserializer.TransactionDefinitionDeserializer;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
@@ -12,10 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.support.incrementer.DataFieldMaxValueIncrementer;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionDefinition;
 
 /**
  * @author Anton Belousov
@@ -33,11 +27,6 @@ public class ServiceConfig {
   @Bean
   public JdbcTemplate jdbcTemplate() {
     return new JdbcTemplate(dataSource);
-  }
-
-  @Bean
-  public PlatformTransactionManager transactionManager() {
-    return new DataSourceTransactionManager(dataSource);
   }
 
   @Bean
@@ -63,12 +52,5 @@ public class ServiceConfig {
   @Bean
   public DataFieldMaxValueIncrementer stepExecutionIncrementer() throws SQLException {
     return incrementerFactory().getIncrementer(databaseType(), tablePrefix + "STEP_EXECUTION_SEQ");
-  }
-
-  @Bean
-  public Module jacksonConfig() {
-    SimpleModule module = new SimpleModule();
-    module.addDeserializer(TransactionDefinition.class, new TransactionDefinitionDeserializer());
-    return module;
   }
 }
