@@ -1,0 +1,8 @@
+database:
+  type: MYSQL
+api:
+  base-url: http://localhost:8080
+
+logging:
+  level:
+    com.restbatch.batchservice.client: DEBUG

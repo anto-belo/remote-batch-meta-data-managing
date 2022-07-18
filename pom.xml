@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <artifactId>remote-batch-meta-data-managing</artifactId>
+  <groupId>com.example</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>remote-batch-meta-data-managing</name>
+  <packaging>pom</packaging>
+
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <relativePath/>
+    <version>2.7.1</version> <!-- lookup parent from repository -->
+  </parent>
+
+  <properties>
+    <java.version>11</java.version>
+  </properties>
+
+  <version>0.0.1-SNAPSHOT</version>
+
+  <modules>
+    <module>database-service</module>
+    <module>batch-service</module>
+  </modules>
+
+</project>
