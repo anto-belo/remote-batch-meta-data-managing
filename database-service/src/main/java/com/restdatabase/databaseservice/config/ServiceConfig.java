@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.database.support.DataFieldMaxValueIncrementerFactory;
 import org.springframework.batch.item.database.support.DefaultDataFieldMaxValueIncrementerFactory;
+import org.springframework.batch.support.DatabaseType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,7 +37,9 @@ public class ServiceConfig {
 
   @Bean
   public String databaseType() throws SQLException {
-    return dataSource.getConnection().getMetaData().getDatabaseProductName();
+    return DatabaseType.fromProductName(
+        dataSource.getConnection().getMetaData().getDatabaseProductName())
+        .name();
   }
 
   @Bean

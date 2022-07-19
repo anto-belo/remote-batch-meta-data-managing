@@ -35,8 +35,8 @@
     </dependency>
 
     <dependency>
-      <artifactId>mysql-connector-java</artifactId>
-      <groupId>mysql</groupId>
+      <groupId>com.microsoft.sqlserver</groupId>
+      <artifactId>mssql-jdbc</artifactId>
       <scope>runtime</scope>
     </dependency>
     <dependency>
